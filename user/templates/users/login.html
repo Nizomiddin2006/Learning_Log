@@ -2,91 +2,43 @@
 {% load django_bootstrap5 %}
 
 {% block content %}
-<div class="login-wrapper">
-    <div class="login-card">
-        <div class="login-icon">
-            <i class="bi bi-person-circle"></i>
-        </div>
+<div class="login-card">
+    <div class="login-icon">
+        <i class="bi bi-person-circle"></i>
+    </div>
 
-        <h2 class="login-title">Xush kelibsiz!</h2>
-        <p class="login-subtitle">Profilingizga kiring</p>
+    <h2 class="fw-bold h3">Xush kelibsiz!</h2>
+    <p class="text-muted small">Profilingizga kiring</p>
 
-        <form method="post" action="{% url 'user:login' %}" class="mt-4">
-            {% csrf_token %}
-            {% bootstrap_form form %}
-            
-            <button name="submit" class="btn btn-brand w-100 py-3 mt-3">
-                Kirish
-            </button>
-            <input type="hidden" name="next" value="{% url 'learning_logs:index' %}" />
-        </form>
+    <form method="post" action="{% url 'user:login' %}" class="mt-4 text-start">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <button name="submit" class="btn btn-brand w-100 py-3 mt-2">Kirish</button>
+        <input type="hidden" name="next" value="{% url 'learning_logs:index' %}" />
+    </form>
 
-        <div class="text-center mt-4">
-            <p class="small text-muted">Hali hisobingiz yo'qmi? 
-                <a href="{% url 'user:register' %}" class="text-accent fw-bold text-decoration-none">Ro'yxatdan o'ting</a>
-            </p>
-        </div>
+    <div class="mt-4 small">
+        <span class="text-muted">Hisobingiz yo'qmi?</span> 
+        <a href="{% url 'user:register' %}" class="text-primary fw-bold text-decoration-none">Ro'yxatdan o'ting</a>
     </div>
 </div>
 
 <style>
-    /* Login sahifasi uchun maxsus stil */
-    .login-wrapper {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 60vh;
-    }
-    
     .login-card {
-        width: 100%;
-        max-width: 400px; /* Blok kengligi */
+        max-width: 350px;
+        margin: 0 auto;
         text-align: center;
     }
-
     .login-icon {
-        font-size: 5rem;
+        font-size: 4rem;
         color: var(--accent);
-        margin-bottom: 1rem;
         background: var(--accent-soft);
-        width: 120px;
-        height: 120px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        width: 100px; height: 100px;
+        display: flex; align-items: center; justify-content: center;
         border-radius: 50%;
         margin: 0 auto 1.5rem;
     }
-
-    .login-title {
-        font-weight: 800;
-        color: var(--text-heading);
-        margin-bottom: 0.5rem;
-    }
-
-    .login-subtitle {
-        color: var(--text-body);
-        font-size: 1rem;
-    }
-
-    /* Bootstrap inputlarini chiroyli qilish */
-    .form-control {
-        border-radius: 12px;
-        padding: 0.8rem 1rem;
-        border: 1px solid #e2e8f0;
-        background: #f8fafc;
-    }
-
-    /* Mobil ekranda masofalar */
-    @media (max-width: 576px) {
-        .login-card {
-            padding: 10px;
-        }
-        .login-icon {
-            width: 100px;
-            height: 100px;
-            font-size: 4rem;
-        }
-    }
+    /* Inputlarni yumaloq qilish */
+    .form-control { border-radius: 12px; padding: 0.7rem; }
 </style>
 {% endblock content %}
