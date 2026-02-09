@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-!mcuox8_y(sd47u+vwy_4*v*=6+lj-nz#x%3s7l$ss2kbgfyw#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']  # Yoki Render beradigan manzilni yozasiz
+
+ALLOWED_HOSTS = ['learning-log-8ceg.onrender.com', 'localhost', '127.0.0.1'] # Yoki Render beradigan manzilni yozasiz
 # ALLOWED_HOSTS = []
 LOGIN_URL = 'user:login'
 LOGOUT_REDIRECT_URL = 'learning_logs:index'
