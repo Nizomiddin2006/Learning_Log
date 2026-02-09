@@ -17,7 +17,7 @@
             --background: #f8fafc;
             --text-heading: #0f172a;
             --text-body: #475569;
-            --nav-bg: rgba(255, 255, 255, 0.85);
+            --nav-bg: rgba(255, 255, 255, 0.95);
             --border: #e2e8f0;
         }
 
@@ -26,15 +26,13 @@
             background-color: var(--background);
             color: var(--text-body);
             -webkit-font-smoothing: antialiased;
-            text-rendering: optimizeLegibility;
             overflow-x: hidden;
         }
 
-        /* Modern Gradient Brand */
+        /* Navigatsiya */
         .navbar-brand {
             font-weight: 800;
             font-size: 1.6rem;
-            letter-spacing: -1px;
             color: var(--text-heading) !important;
             display: flex;
             align-items: center;
@@ -42,44 +40,40 @@
         }
         .brand-dot { color: var(--accent); }
 
-        /* Floating Navbar */
         .navbar {
-            padding: 1.2rem 0;
-            backdrop-filter: blur(16px) saturate(180%);
+            padding: 1rem 0;
+            backdrop-filter: blur(16px);
             background: var(--nav-bg);
             border-bottom: 1px solid var(--border);
-            transition: all 0.3s ease;
         }
 
-        /* Glassmorphism Content Box */
+        /* Asosiy oq blok (Glassmorphism) */
         .content-box {
             background: var(--surface);
             border-radius: 32px;
             padding: 3.5rem;
             border: 1px solid var(--border);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 
-                        0 20px 25px -5px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
+            animation: fadeIn 0.6s ease-out;
         }
 
-        /* Advanced Buttons */
+        /* Tugmalar */
         .btn-brand {
             background: var(--accent);
             color: white;
             border: none;
             padding: 0.8rem 1.8rem;
-            border-radius: 16px;
+            border-radius: 14px;
             font-weight: 700;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .btn-brand:hover {
             background: #4f46e5;
             color: white;
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 15px 30px -5px rgba(99, 102, 241, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -5px rgba(99, 102, 241, 0.4);
         }
 
-        /* Profile & Logout Section */
         .user-pill {
             background: var(--accent-soft);
             padding: 6px 16px;
@@ -87,101 +81,41 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            border: 1px solid rgba(99, 102, 241, 0.1);
         }
 
         .logout-btn-circle {
-            width: 42px;
-            height: 42px;
+            width: 42px; height: 42px;
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #fff;
-            color: #ef4444;
-            border: 1px solid #fee2e2;
-            transition: all 0.2s;
-        }
-        .logout-btn-circle:hover {
-            background: #ef4444;
-            color: #fff;
-            transform: rotate(90deg);
+            display: flex; align-items: center; justify-content: center;
+            background: #fff; color: #ef4444; border: 1px solid #fee2e2;
+            transition: 0.3s;
         }
 
-        /* Back Button - Minimalist */
-        .back-nav {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--text-body);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.95rem;
-            margin-bottom: 2rem;
-            padding: 8px 16px;
-            border-radius: 12px;
-            transition: all 0.2s;
-        }
-        .back-nav:hover {
-            background: var(--accent-soft);
-            color: var(--accent);
-        }
-
-        /* Layout */
-        .main-container {
-            margin-top: 4rem;
-            margin-bottom: 6rem;
+        /* Mobil qurilmalar uchun (Responsive) */
+        @media (max-width: 768px) {
+            .content-box {
+                padding: 1.5rem; /* Ichki bo'shliqni kamaytirdik */
+                border-radius: 24px;
+                margin: 0 5px; /* Yonlaridan ozgina masofa */
+            }
+            .main-container {
+                margin-top: 1.5rem;
+                margin-bottom: 3rem;
+            }
+            .navbar-brand { font-size: 1.3rem; }
+            .navbar-collapse {
+                background: white;
+                margin-top: 1rem;
+                padding: 1rem;
+                border-radius: 15px;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            }
         }
 
-        footer {
-            background: var(--surface);
-            padding: 4rem 0;
-            border-top: 1px solid var(--border);
-        }
-
-        /* Micro-animations */
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
+            from { opacity: 0; transform: translateY(15px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .content-box { animation: fadeIn 0.6s ease-out; }
-
-        /* Mobil qurilmalar uchun moslashtirish */
-@media (max-width: 768px) {
-    .content-box {
-        padding: 1.5rem; /* Telefonda ichki joyni kamaytiramiz */
-        border-radius: 20px; /* Burchaklarni biroz yumshatamiz */
-    }
-
-    .main-container {
-        margin-top: 2rem; /* Tepadan masofani kamaytiramiz */
-        padding: 0 10px; /* Yon tomondan biroz joy tashlaymiz */
-    }
-
-    .navbar-brand {
-        font-size: 1.3rem; /* Brand nomini biroz kichraytiramiz */
-    }
-
-    .user-pill {
-        display: none !important; /* Telefonda foydalanuvchi nomini yashirib turamiz (joy tejash uchun) */
-    }
-    
-    .btn-brand {
-        padding: 0.6rem 1.2rem;
-        font-size: 0.9rem;
-    }
-}
-
-/* Juda kichik ekranlar uchun (iPhone SE kabi) */
-@media (max-width: 400px) {
-    .navbar .container {
-        padding: 0 15px;
-    }
-    .content-box {
-        padding: 1rem;
-    }
-}
-
     </style>
 </head>
 <body class="d-flex flex-column min-vh-100">
@@ -192,12 +126,12 @@
                 <i class="bi bi-intersect brand-dot"></i> Loggy<span class="brand-dot">.</span>
             </a>
             
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto ps-lg-5">
+                <ul class="navbar-nav me-auto ps-lg-4">
                     <li class="nav-item">
                         <a class="nav-link fw-semibold px-3 text-dark" href="{% url 'learning_logs:topics' %}">
                             <i class="bi bi-stack me-1"></i> Mavzular
@@ -205,21 +139,21 @@
                     </li>
                 </ul>
 
-                <div class="d-flex align-items-center gap-3">
+                <div class="d-flex flex-column flex-lg-row align-items-lg-center gap-3">
                     {% if user.is_authenticated %}
-                        <div class="user-pill d-none d-sm-flex">
+                        <div class="user-pill">
                             <i class="bi bi-person-circle text-accent fs-5"></i>
                             <span class="fw-bold text-dark fs-6">{{ user.username }}</span>
                         </div>
-                        <form action="{% url 'users:logout' %}" method="post" class="m-0">
+                        <form action="{% url 'user:logout' %}" method="post" class="m-0">
                             {% csrf_token %}
                             <button type="submit" class="logout-btn-circle" title="Chiqish">
                                 <i class="bi bi-power"></i>
                             </button>
                         </form>
                     {% else %}
-                        <a href="{% url 'users:login' %}" class="btn btn-link text-decoration-none text-dark fw-bold px-4">Kirish</a>
-                        <a href="{% url 'users:register' %}" class="btn btn-brand">Boshlash</a>
+                        <a href="{% url 'user:login' %}" class="btn btn-link text-decoration-none text-dark fw-bold">Kirish</a>
+                        <a href="{% url 'user:register' %}" class="btn btn-brand">Boshlash</a>
                     {% endif %}
                 </div>
             </div>
@@ -228,10 +162,10 @@
 
     <main class="container main-container">
         <div class="row justify-content-center">
-            <div class="col-xl-8 col-lg-10">
+            <div class="col-xl-8 col-lg-10 col-12">
                 {% if request.resolver_match.url_name != 'index' %}
-                    <a href="javascript:history.back()" class="back-nav">
-                        <i class="bi bi-arrow-left"></i> Orqaga qaytish
+                    <a href="javascript:history.back()" class="text-decoration-none text-muted mb-3 d-inline-block fw-bold small">
+                        <i class="bi bi-arrow-left"></i> ORQAGA QAYTISH
                     </a>
                 {% endif %}
 
@@ -242,17 +176,10 @@
         </div>
     </main>
 
-    <footer class="text-center mt-auto">
+    <footer class="text-center mt-auto py-5 border-top bg-white">
         <div class="container">
-            <div class="mb-4">
-                <a class="navbar-brand justify-content-center" href="#">
-                    Loggy<span class="brand-dot">.</span>
-                </a>
-            </div>
-            <div class="text-muted small mb-0">
-                &copy; 2026 Barcha huquqlar himoyalangan. <br>
-                <span class="opacity-50 mt-2 d-block">Bilim olish — bu intihosiz sayohatdir.</span>
-            </div>
+            <h5 class="fw-bold">Loggy<span class="brand-dot">.</span></h5>
+            <p class="text-muted small">© 2026 Barcha huquqlar himoyalangan.</p>
         </div>
     </footer>
 
