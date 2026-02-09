@@ -23,11 +23,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-!mcuox8_y(sd47u+vwy_4*v*=6+lj-nz#x%3s7l$ss2kbgfyw#'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']  # Yoki Render beradigan manzilni yozasiz
 # ALLOWED_HOSTS = []
-LOGIN_URL = '/user/login/'
+LOGIN_URL = 'user:login'
 LOGOUT_REDIRECT_URL = 'learning_logs:index'
 
 BOOTSTRAP5 = {
