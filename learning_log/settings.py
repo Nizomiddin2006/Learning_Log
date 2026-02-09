@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']  # Yoki Render beradigan manzilni yozasiz
 # ALLOWED_HOSTS = []
-LOGIN_URL = '/users/login/'
+LOGIN_URL = '/user/login/'
 LOGOUT_REDIRECT_URL = 'learning_logs:index'
 
 BOOTSTRAP5 = {
