@@ -1,0 +1,52 @@
+{% extends "learning_logs/base.html" %}
+
+{% block content %}
+<div class="row align-items-center py-5">
+    <div class="col-lg-7 text-center text-lg-start">
+        <h1 class="display-3 fw-bold lh-1 mb-3">Bilimlaringizni tartiblang.</h1>
+        <p class="col-lg-10 fs-4 text-muted">
+            Learning Log — bu siz o'rganayotgan har qanday mavzu bo'yicha yozuvlarni saqlab borishda yordam beruvchi shaxsiy kundalikdir. O'z progresssangizni kuzatib boring!
+        </p>
+        
+        <div class="d-grid gap-2 d-md-flex justify-content-md-start mt-4">
+            {% if not user.is_authenticated %}
+                <a href="{% url 'users:register' %}" class="btn btn-primary btn-lg px-4 me-md-2 fw-bold">Boshlash</a>
+                <a href="{% url 'users:login' %}" class="btn btn-outline-secondary btn-lg px-4">Kirish</a>
+            {% else %}
+                <a href="{% url 'learning_logs:topics' %}" class="btn btn-primary btn-lg px-4 fw-bold">Mavzularimni ko'rish</a>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="col-10 col-sm-8 col-lg-5 mx-auto mt-5 mt-lg-0">
+        <div class="p-5 bg-primary bg-gradient text-white rounded-5 shadow-lg text-center">
+            <i class="bi bi-journal-bookmark-fill" style="font-size: 5rem;"></i>
+            <h2 class="mt-3">Log It!</h2>
+            <p>Har bir qadamni muhrlang.</p>
+        </div>
+    </div>
+</div>
+
+<hr class="my-5">
+
+<div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+    <div class="col d-flex align-items-start">
+        <div>
+            <h3 class="fs-2 text-body-emphasis">Mavzular yarating</h3>
+            <p>O'rganmoqchi bo'lgan sohalaringiz uchun alohida mavzular oching.</p>
+        </div>
+    </div>
+    <div class="col d-flex align-items-start">
+        <div>
+            <h3 class="fs-2 text-body-emphasis">Yozuvlar qo'shing</h3>
+            <p>Har kuni o'rgangan yangi tushunchalaringizni qisqacha yozib boring.</p>
+        </div>
+    </div>
+    <div class="col d-flex align-items-start">
+        <div>
+            <h3 class="fs-2 text-body-emphasis">Xavfsiz saqlang</h3>
+            <p>Ma'lumotlaringiz faqat o'zingizga ko'rinadi va xavfsiz himoyalangan.</p>
+        </div>
+    </div>
+</div>
+{% endblock content %}

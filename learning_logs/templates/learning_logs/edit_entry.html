@@ -1,0 +1,41 @@
+{% extends "learning_logs/base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'learning_logs:topics' %}">Mavzular</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'learning_logs:topic' topic.id %}">{{ topic }}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Tahrirlash</li>
+            </ol>
+        </nav>
+
+        <div class="card shadow-sm mt-3">
+            <div class="card-header bg-primary text-white">
+                <h5 class="card-title mb-0">Yozuvni tahrirlash</h5>
+            </div>
+            <div class="card-body">
+                <p class="text-muted small">Mavzu: <strong>{{ topic }}</strong></p>
+                
+                <form action="{% url 'learning_logs:edit_entry' entry.id %}" method='post'>
+                    {% csrf_token %}
+                    
+                    <div class="mb-3">
+                        {{ form.as_p }}
+                    </div>
+
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                        <button name="submit" class="btn btn-success">
+                            <i class="bi bi-check-lg"></i> Saqlash
+                        </button>
+                        <a href="{% url 'learning_logs:topic' topic.id %}" class="btn btn-outline-secondary">
+                            Bekor qilish
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

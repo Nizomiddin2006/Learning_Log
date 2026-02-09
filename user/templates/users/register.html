@@ -1,0 +1,91 @@
+{% extends "learning_logs/base.html" %}
+
+{% block content %}
+<div class="row justify-content-center align-items-center" style="min-height: 75vh;">
+    <div class="col-md-7 col-lg-5">
+        
+        <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
+            <div class="row g-0">
+                <div class="card-body p-5">
+                    <div class="text-center mb-4">
+                        <div class="bg-success bg-gradient text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                            <i class="bi bi-person-plus-fill fs-2"></i>
+                        </div>
+                        <h2 class="fw-bold">Hisob yaratish</h2>
+                        <p class="text-muted">O'rganishni hoziroq boshlang!</p>
+                    </div>
+
+                    {% if form.errors %}
+                        <div class="alert alert-warning border-0 shadow-sm mb-4">
+                            <i class="bi bi-exclamation-circle me-2"></i>
+                            Iltimos, quyidagi xatolarni tuzating.
+                        </div>
+                    {% endif %}
+
+                    <form method="post" action="{% url 'users:register' %}" class="needs-validation">
+                        {% csrf_token %}
+                        
+                        <div class="mb-3 register-form-fields">
+                            {{ form.as_p }}
+                        </div>
+
+                        <div class="d-grid mt-4">
+                            <button name="submit" class="btn btn-success btn-lg fw-bold rounded-pill shadow-sm">
+                                Ro'yxatdan o'tish
+                            </button>
+                        </div>
+                        
+                        <input type="hidden" name="next" value="{% url 'learning_logs:index' %}" />
+                    </form>
+
+                    <hr class="my-4">
+
+                    <div class="text-center">
+                        <p class="mb-0 text-muted">Profilingiz bormi?</p>
+                        <a href="{% url 'users:login' %}" class="text-success fw-bold text-decoration-none">Tizimga kirish</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<style>
+    .register-form-fields p label {
+        font-weight: 600;
+        margin-bottom: 5px;
+        color: #495057;
+        display: block;
+    }
+    .register-form-fields p input {
+        display: block;
+        width: 100%;
+        padding: 0.6rem 1rem;
+        font-size: 1rem;
+        color: #212529;
+        background-color: #fff;
+        border: 1px solid #dee2e6;
+        border-radius: 0.5rem;
+        transition: all 0.2s ease-in-out;
+    }
+    .register-form-fields p input:focus {
+        border-color: #198754;
+        outline: 0;
+        box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.25);
+    }
+    .register-form-fields .helptext {
+        display: block;
+        font-size: 0.75rem;
+        color: #6c757d;
+        margin-top: 5px;
+        margin-bottom: 15px;
+    }
+    .register-form-fields ul {
+        font-size: 0.75rem;
+        color: #dc3545;
+        padding-left: 20px;
+        margin-bottom: 15px;
+    }
+</style>
+{% endblock content %}

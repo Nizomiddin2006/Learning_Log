@@ -1,0 +1,66 @@
+{% extends 'learning_logs/base.html' %}
+{% load django_bootstrap5 %}
+
+{% block content %}
+<div class="row justify-content-center py-4">
+    <div class="col-md-8 col-lg-6">
+        
+        <nav aria-label="breadcrumb" class="mb-4">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'learning_logs:topics' %}" class="text-accent text-decoration-none fw-medium">Mavzular</a></li>
+                <li class="breadcrumb-item active text-muted" aria-current="page">Yangi mavzu</li>
+            </ol>
+        </nav>
+
+        <div class="card shadow-sm border-0 rounded-4 overflow-hidden">
+            <div class="card-header bg-accent text-white py-4 border-0">
+                <h4 class="card-title mb-0 text-center fw-bold">
+                    <i class="bi bi-folder-plus me-2"></i> Yangi mavzu yaratish
+                </h4>
+            </div>
+            
+            <div class="card-body p-4 p-lg-5">
+                <form action="{% url 'learning_logs:new_topic' %}" method='post' class="needs-validation">
+                    {% csrf_token %}
+                    
+                    <div class="mb-4">
+                        <label class="form-label fw-bold text-dark">Mavzu nima haqida?</label>
+                        {% bootstrap_form form show_label=False %}
+                        <div class="form-text mt-2">
+                            <i class="bi bi-info-circle me-1"></i> Masalan: "Python asoslari", "Shaxsiy moliya" yoki "Kitoblar".
+                        </div>
+                    </div>
+
+                    <div class="d-grid gap-3">
+                        <button name="submit" class="btn btn-brand btn-lg py-3 rounded-3 shadow-sm">
+                            <i class="bi bi-check-circle-fill me-2"></i>Mavzuni saqlash
+                        </button>
+                        
+                        <a href="{% url 'learning_logs:topics' %}" class="btn btn-light btn-lg py-3 rounded-3 text-muted border">
+                            Bekor qilish
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Inputlarni yanada chiroyli qilish */
+    input[type="text"] {
+        border-radius: 12px !important;
+        padding: 12px 15px !important;
+        border: 1px solid #e2e8f0 !important;
+    }
+    .btn-brand {
+        background-color: var(--accent);
+        color: white;
+        transition: all 0.3s;
+    }
+    .btn-brand:hover {
+        background-color: #4f46e5;
+        transform: translateY(-2px);
+    }
+</style>
+{% endblock content %}

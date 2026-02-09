@@ -1,0 +1,47 @@
+{% extends 'learning_logs/base.html' %}
+
+{% block content %}
+<div class="container py-4">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'learning_logs:topics' %}">Barcha mavzular</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ topic }}</li>
+        </ol>
+    </nav>
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="display-5 fw-bold text-primary">{{ topic }}</h1>
+        <a href="{% url 'learning_logs:new_entry' topic.id %}" class="btn btn-primary shadow-sm">
+            <i class="bi bi-plus-lg"></i> Yangi qayd qo'shish
+        </a>
+    </div>
+
+    <hr>
+
+    <h4 class="mb-3 text-muted">Yozuvlar:</h4>
+
+    {% for entry in entries %}
+        <div class="card mb-3 shadow-sm border-start border-4 border-primary">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                    <h6 class="card-subtitle text-muted italic">
+                        <i class="bi bi-calendar3 me-1"></i> {{ entry.date_added|date:'M d, Y H:i' }}
+                    </h6>
+                    <a href="{% url 'learning_logs:edit_entry' entry.id %}" class="btn btn-sm btn-outline-info">
+                        <i class="bi bi-pencil-square"></i> Tahrirlash
+                    </a>
+                </div>
+                <div class="card-text fs-5">
+                    {{ entry.text|linebreaks }}
+                </div>
+            </div>
+        </div>
+    {% empty %}
+        <div class="alert alert-light border text-center py-5">
+            <i class="bi bi-chat-dots fs-1 text-muted"></i>
+            <p class="mt-3 fs-5">Ushbu mavzu bo'yicha hali hech qanday yozuv yo'q.</p>
+            <a href="{% url 'learning_logs:new_entry' topic.id %}" class="btn btn-sm btn-link">Birinchi qaydni qo'shish</a>
+        </div>
+    {% endfor %}
+</div>
+{% endblock content %}
